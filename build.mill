@@ -1,0 +1,54 @@
+//| mill-version: 1.0.6
+//| mill-jvm-version: 17
+//+---------------------------------------------------------------
+
+package build
+
+import mill.*, scalalib.*
+
+import java.io.*
+import java.nio.file.attribute.PosixFilePermission.*
+
+import java.net.URL
+import scala.util.Using
+
+val Params = ghpages.unstatic.template.Params(
+  siteServerAbsUrl = "https://www.example.com/",
+  title            = "Example Blog",
+  // maxFrontPageEntries   = 5,
+  // timeZone              = "America/NewYork",
+  // sitePath              = "/",
+  // sitePackage           = "my.unstatic.website",
+  // millVersion           = "1.0.6",
+  // millJvmVersion        = "17",
+  // untemplateMillVersion = "0.3.0",
+  // unstaticVersion       = "0.4.0",
+  // scalaVersion          = "3.3.7",
+  // entriesSubpackage     = "entries",
+  // entriesDir            = "entries",
+)
+
+object `package` extends Module:
+  def template = Task:
+    import ghpages.unstatic.template.root
+    os.write(os.Path("build.mill", os.pwd), root.build_mill(Params).text)
+    os.makeDir(os.Path("src", os.pwd))
+    os.write(os.Path("src/MainSite.scala",os.pwd), root.src.MainSite_scala(Params).text)
+    os.makeDir(os.Path("untemplate", os.pwd))
+    os.makeDir(os.Path(Params.entriesDir, os.pwd))
+    os.makeDir(os.Path("static", os.pwd))
+    os.makeDir(os.Path("static/css", os.pwd))
+
+    val SourceUrl = "https://raw.githubusercontent.com/com-lihaoyi/mill/refs/heads/main/mill"
+    val TargetPath = os.Path("mill", os.pwd)
+
+    // write the mill wrapper script
+    Using.resource( new BufferedInputStream( new URL(SourceUrl).openStream() ) ): is =>
+      val exists = os.exists(TargetPath)
+      if exists then
+        val perms : os.PermSet = os.perms(TargetPath) + OWNER_EXECUTE + GROUP_EXECUTE + OTHERS_EXECUTE
+        os.write.over(TargetPath, is, perms=(os.perms(TargetPath) + OWNER_EXECUTE + GROUP_EXECUTE + OTHERS_EXECUTE))
+      else
+        val perms : os.PermSet = "rwxr-xr-x"
+        os.write(TargetPath, is, perms=perms)
+

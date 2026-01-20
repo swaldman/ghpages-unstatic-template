@@ -1,0 +1,28 @@
+//| mill-version: 1.0.6
+//| mill-jvm-version: 17
+//| mvnDeps: ["com.mchange::untemplate-mill:0.3.0"]
+//+---------------------------------------------------------------
+
+package build
+
+import mill.*, scalalib.*
+import mill.meta.MillBuildRootModule
+
+import untemplate.mill.*
+
+object `package` extends MillBuildRootModule, UntemplateModule:
+
+  // we'll build an index!
+  override def untemplateIndexNameFullyQualified : Option[String] = Some("ghpages.unstatic.template.untemplates")
+
+  override def untemplateSelectCustomizer: untemplate.Customizer.Selector = key =>
+    var out = untemplate.Customizer.empty
+
+    // to customize, examine key and modify the customer
+    // with out = out.copy=...
+    //
+    // e.g. out = out.copy(extraImports=Seq("draft.*"))
+
+    out = out.copy(extraImports=Seq("ghpages.unstatic.template.*"))
+
+    out
