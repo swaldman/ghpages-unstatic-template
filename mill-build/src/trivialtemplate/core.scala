@@ -3,6 +3,8 @@
 
 package trivialtemplate
 
+final class KeyNotFound( message : String, cause : Throwable = null) extends Exception( message, cause )
+
 /**
   * Replacement is case-insensitive
   */
@@ -24,3 +26,4 @@ case class TrivialTemplate( body : String ):
     val replaced = KeyRegex.replaceAllIn( body, m => { val k = m.group(1).toLowerCase(); replacements.map((k,v)=>(k.toLowerCase,v)).getOrElse( k, defaults(k) ) } )
     val unescaped = EscapedKeyRegex.replaceAllIn( replaced, m => m.group(0).substring(1) ) 
     unescaped
+

@@ -6,6 +6,8 @@ package build
 
 import mill.*, scalalib.*
 
+import mill.api.BuildCtx
+
 import java.io.*
 import java.nio.file.attribute.PosixFilePermission.*
 
@@ -16,7 +18,7 @@ val Params = ghpages.unstatic.template.Params(
   siteServerAbsUrl = "https://www.example.com/",
   title            = "Example Blog",
   // maxFrontPageEntries   = 5,
-  // timeZone              = "America/NewYork",
+  // timeZone              = "America/New_York",
   // sitePath              = "/",
   // sitePackage           = "my.unstatic.website",
   // millVersion           = "1.0.6",
@@ -30,11 +32,22 @@ val Params = ghpages.unstatic.template.Params(
 
 object `package` extends Module:
   def template = Task:
+    val untemplatePackagePath =
+      val list = "untemplate" :: Params.sitePackage.split("\\.").toList
+      os.Path( list.mkString("/"), os.pwd )
+
     import ghpages.unstatic.template.root
     os.write(os.Path("build.mill", os.pwd), root.build_mill(Params).text)
     os.makeDir(os.Path("src", os.pwd))
     os.write(os.Path("src/MainSite.scala",os.pwd), root.src.MainSite_scala(Params).text)
     os.makeDir(os.Path("untemplate", os.pwd))
+    os.makeDir.all( untemplatePackagePath )
+    BuildCtx.withFilesystemCheckerDisabled:
+      os.write( untemplatePackagePath / "layout-main.html.untemplate", buildutil.resolveLayoutMainHtmlUntemplate( Map("title" -> Params.title) ) )
+      os.write( untemplatePackagePath / "layout-entry.html.untemplate", buildutil.staticLayoutEntryHtmlUntemplate )
+      os.write( untemplatePackagePath / "layout-archive.html.untemplate", buildutil.staticLayoutArchiveHtmlUntemplate )
+      os.write( untemplatePackagePath / "layout-update-history.html.untemplate", buildutil.staticLayoutUpdateHistoryHtmlUntemplate )
+      os.write( untemplatePackagePath / "entry-separator.html.untemplate", buildutil.staticEntrySeparatorHtmlUntemplate )
     os.makeDir(os.Path(Params.entriesDir, os.pwd))
     os.makeDir(os.Path("static", os.pwd))
     os.makeDir(os.Path("static/css", os.pwd))

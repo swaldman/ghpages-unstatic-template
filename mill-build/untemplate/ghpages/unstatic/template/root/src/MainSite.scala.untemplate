@@ -57,7 +57,7 @@ object MainSite extends ZTSite.SingleStaticRootComposite( JPath.of("static") ):
     override def layoutEntry(input: Layout.Input.Entry) : String = layout_entry_html(input).text
 
     // overriding a def, but it's just a constant, so we override with val
-    override val entrySeparator : String = partials.entry_separator_html().text
+    override val entrySeparator : String = entry_separator_html().text
 
     // here the blog shares the sites main overall layout
     override def layoutPage(input: Layout.Input.Page): String =

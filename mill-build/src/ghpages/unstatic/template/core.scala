@@ -4,7 +4,7 @@ case class Params(
   siteServerAbsUrl      : String,
   title                 : String,
   maxFrontPageEntries   : Int    = 5,
-  timeZone              : String = "America/NewYork",
+  timeZone              : String = "America/New_York",
   sitePath              : String = "/",
   sitePackage           : String = "my.unstatic.website",
   millVersion           : String = "1.0.6",

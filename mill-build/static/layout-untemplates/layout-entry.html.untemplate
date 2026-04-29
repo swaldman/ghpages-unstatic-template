@@ -45,7 +45,7 @@ val related =
 
 given PageBase = PageBase.fromPage(input.renderLocation)
 
-(input : DraftsSite.MainBlog.Layout.Input.Entry)[]~()> ### Generated HTML begins below
+(input : MainSite.MainBlog.Layout.Input.Entry)[]~()> ### Generated HTML begins below
       <article class="<(articleClasses)>">
       <div class="entry-header-body-footer">
         <div class="entry-header">

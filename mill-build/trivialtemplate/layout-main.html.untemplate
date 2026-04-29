@@ -10,7 +10,6 @@ val feedLoc = blog.rssFeed
 val cssLoc = site.location("css/style.css")
 val mainLoc = site.location("/index.html")
 val archiveLoc = MainSite.MainBlog.Archive.location
-val subscribeLoc = MainSite.MainBlog.Subscribe.location
 
 val mbAllItemFeedLoc = blog.allItemFeedSiteRooted.map( aifsr => site.location( aifsr ) )
 val allItemFeedLink =
