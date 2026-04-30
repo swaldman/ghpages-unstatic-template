@@ -22,4 +22,7 @@ def staticLayoutUpdateHistoryHtmlUntemplate : String =
 def staticEntrySeparatorHtmlUntemplate : String =
   os.read( os.Path("static/layout-untemplates/entry-separator.html.untemplate", metabuildRoot) )
 
+def staticCssStyle : String =
+  os.read( os.Path("static/css/style.css", metabuildRoot) )
+
 

@@ -60,6 +60,8 @@ object `package` extends Module:
       os.write( entriesPath / "entry-hello.md.untemplate", buildutil.resolveLayoutHelloPost( Map("pubdate" -> ts) ) )
     os.makeDir(os.Path("static", os.pwd))
     os.makeDir(os.Path("static/css", os.pwd))
+    BuildCtx.withFilesystemCheckerDisabled:
+      os.write( os.Path("static/css/style.css", os.pwd), buildutil.staticCssStyle )
 
     val SourceUrl = "https://raw.githubusercontent.com/com-lihaoyi/mill/refs/heads/main/mill"
     val TargetPath = os.Path("mill", os.pwd)

@@ -11,6 +11,10 @@ val cssLoc = site.location("css/style.css")
 val mainLoc = site.location("/index.html")
 val archiveLoc = MainSite.MainBlog.Archive.location
 
+val currentSiteRootedPath = input.renderLocation.siteRootedPath
+val onMain    = currentSiteRootedPath == mainLoc.siteRootedPath
+val onArchive = currentSiteRootedPath == archiveLoc.siteRootedPath
+
 val mbAllItemFeedLoc = blog.allItemFeedSiteRooted.map( aifsr => site.location( aifsr ) )
 val allItemFeedLink =
   mbAllItemFeedLoc.fold("")( aifl =>
@@ -51,11 +55,28 @@ end title
   <body>
     <div id="top-banner"></div>
     <header>
-      <div id="rss-link-container">
-        <a id="rss-link" href="<( feedLoc.relative )>"><span class="outer">(</span><span class="middle">(</span><span class="inner">(</span>&bull;<span class="inner">)</span><span class="middle">)</span><span class="outer">)</span></a>
+      <div id="site-title-container">
+        <a id="site-title" href="<( mainLoc.relative )>">%title%</a>
       </div>
       <div id="menu-container">
+<()
+  if onMain then {
+()>
+	<span class="active">main</span> | <a href="<( archiveLoc.relative )>">archive</a>
+<()
+  } else if onArchive then {
+()>
+	<a href="<( mainLoc.relative )>">main</a> | <span class="active">archive</span>
+<()
+  } else {
+()>
 	<a href="<( mainLoc.relative )>">main</a> | <a href="<( archiveLoc.relative )>">archive</a>
+<()
+  }
+()>
+      </div>
+      <div id="rss-link-container">
+        <a id="rss-link" href="<( feedLoc.relative )>"><span class="outer">(</span><span class="middle">(</span><span class="inner">(</span>&bull;<span class="inner">)</span><span class="middle">)</span><span class="outer">)</span></a>
       </div>
     </header>
     <main>
