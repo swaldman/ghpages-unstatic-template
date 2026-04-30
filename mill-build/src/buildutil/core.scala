@@ -6,6 +6,10 @@ def resolveLayoutMainHtmlUntemplate( replacements : Map[String,String] ) : Strin
   val tt = trivialtemplate.TrivialTemplate(os.read(os.Path("trivialtemplate/layout-main.html.untemplate", metabuildRoot)))
   tt.resolve( replacements )
 
+def resolveLayoutHelloPost( replacements : Map[String,String] ) : String =
+  val tt = trivialtemplate.TrivialTemplate(os.read(os.Path("trivialtemplate/entry-hello.md.untemplate", metabuildRoot)))
+  tt.resolve( replacements )
+
 def staticLayoutEntryHtmlUntemplate : String =
   os.read( os.Path("static/layout-untemplates/layout-entry.html.untemplate", metabuildRoot) )
 

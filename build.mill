@@ -32,9 +32,16 @@ val Params = ghpages.unstatic.template.Params(
 
 object `package` extends Module:
   def template = Task:
+    val ts =
+      import java.time.{Instant,ZoneId}
+      import java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME
+      ISO_OFFSET_DATE_TIME.format( Instant.now().atZone(ZoneId.of(Params.timeZone)) )
+
     val untemplatePackagePath =
       val list = "untemplate" :: Params.sitePackage.split("\\.").toList
       os.Path( list.mkString("/"), os.pwd )
+
+    val entriesPath = os.Path("entries", os.pwd)
 
     import ghpages.unstatic.template.root
     os.write(os.Path("build.mill", os.pwd), root.build_mill(Params).text)
@@ -48,7 +55,9 @@ object `package` extends Module:
       os.write( untemplatePackagePath / "layout-archive.html.untemplate", buildutil.staticLayoutArchiveHtmlUntemplate )
       os.write( untemplatePackagePath / "layout-update-history.html.untemplate", buildutil.staticLayoutUpdateHistoryHtmlUntemplate )
       os.write( untemplatePackagePath / "entry-separator.html.untemplate", buildutil.staticEntrySeparatorHtmlUntemplate )
-    os.makeDir(os.Path(Params.entriesDir, os.pwd))
+    os.makeDir(entriesPath)
+    BuildCtx.withFilesystemCheckerDisabled:
+      os.write( entriesPath / "entry-hello.md.untemplate", buildutil.resolveLayoutHelloPost( Map("pubdate" -> ts) ) )
     os.makeDir(os.Path("static", os.pwd))
     os.makeDir(os.Path("static/css", os.pwd))
 
