@@ -23,8 +23,6 @@ val zip = site.location("/zip.html")
 <div class="archive">
   <h1>archive</h1>
 
-  <p class="download-zip-offer"><i>...you can also <a href="<( zip.relative )>">download the complete site</a> as a zip file.</i></p>
-
   <dl>
 <()  
   entryUntemplatesResolvedByMonthStr.foreach { case ( ms, eutrs ) =>
@@ -37,7 +35,7 @@ val zip = site.location("/zip.html")
       val permalinkLoc = site.location( eutr.entryInfo.permalinkPathSiteRooted )
       val title        = eutr.entryInfo.mbTitle.getOrElse("(Untitled Post)")
       val mbUid        = Anchor.caseInsensitiveCheck(eutr.entryUntemplate)
-      
+
       val uidComment =
         mbUid match
           case Some(uid) => s" <!-- UID: $uid -->"
@@ -48,7 +46,7 @@ val zip = site.location("/zip.html")
 <()
     }
 ()>
-      </ul> 
+      </ul>
     </dd>
 <()
   }

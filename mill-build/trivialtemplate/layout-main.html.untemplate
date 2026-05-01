@@ -76,7 +76,7 @@ end title
 ()>
       </div>
       <div id="rss-link-container">
-        <a id="rss-link" href="<( feedLoc.relative )>"><span class="outer">(</span><span class="middle">(</span><span class="inner">(</span>&bull;<span class="inner">)</span><span class="middle">)</span><span class="outer">)</span></a>
+        <a id="rss-link" href="<( feedLoc.relative )>"><img id="rss-link-image" border="0" src="image/1024px-Feed-icon.svg_.png"></a>
       </div>
     </header>
     <main>

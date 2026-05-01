@@ -102,6 +102,9 @@ header {
   letter-spacing: -0.05em;
 }
 #rss-link:hover { color: var(--color-accent); text-decoration: none; }
+#rss-link-image {
+    height: 1em;
+}
 
 main {
   max-width: var(--max-content-width);
@@ -241,11 +244,11 @@ hr.entry-separator {
 }
 .archive dl { margin: 0; }
 .archive dt {
-  font-weight: 600;
+  font-weight: 800;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-muted);
+  color: var(--color-text);
   margin: 1.75rem 0 0.5rem;
 }
 .archive dd { margin: 0; padding: 0; }
@@ -255,6 +258,7 @@ hr.entry-separator {
   margin: 0;
 }
 .archive dd li {
+  margin-left: 1em;
   border-bottom: 1px solid var(--color-border);
 }
 .archive dd li:last-child { border-bottom: none; }

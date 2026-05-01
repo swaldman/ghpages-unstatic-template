@@ -25,4 +25,7 @@ def staticEntrySeparatorHtmlUntemplate : String =
 def staticCssStyle : String =
   os.read( os.Path("static/css/style.css", metabuildRoot) )
 
+def copyImageInto( dir : os.Path ) =
+  os.copy.into( os.Path("static/image", metabuildRoot), dir )
+
 
