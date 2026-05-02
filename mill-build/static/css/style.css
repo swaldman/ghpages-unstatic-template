@@ -237,18 +237,13 @@ hr.entry-separator {
   margin: 0 0 1.5rem;
   letter-spacing: -0.015em;
 }
-.archive .download-zip-offer {
-  font-size: 0.9rem;
-  color: var(--color-muted);
-  margin-bottom: 2rem;
-}
 .archive dl { margin: 0; }
 .archive dt {
   font-weight: 800;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-text);
+  color: var(--color-muted);
   margin: 1.75rem 0 0.5rem;
 }
 .archive dd { margin: 0; padding: 0; }

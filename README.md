@@ -15,7 +15,7 @@ whenever you push it to the `main` branch of a github repository.
 It is intended to be simple enough for a modestly technical person to conveniently use. You do need to be comfortable
 editing plaintext markdown files with weird headers.
 
-(We are working on infrastructure to generate static sites for less technical authors, with a wordpress style interface.
+(I am working on infrastructure to generate static sites for less technical authors, with a wordpress style interface.
 But this isn't that.)
 
 ### Getting Started
