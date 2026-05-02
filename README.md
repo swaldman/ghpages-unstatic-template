@@ -58,7 +58,7 @@ _For this tutorial, I've set up a custom domain, `https://test-unstatic.mchange.
    - `title` &mdash; this will become the user-visible title of the generated site
 
    _For this tutorial, I've set `siteServerAbsUrl` to `https://test-unstatic.mchange.com` and
-   title to `https://test-unstatic.mchange.com`_XS
+   title to `Getting Started Example`._
 
    Here's what `Params` looks like. You can uncomment and override other values if you wish.
    For available time zones, run `./mill showTimeZones` in this repository.
