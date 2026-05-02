@@ -41,7 +41,8 @@ object `package` extends Module:
     val ts =
       import java.time.{Instant,ZoneId}
       import java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME
-      ISO_OFFSET_DATE_TIME.format( Instant.now().atZone(ZoneId.of(Params.timeZone)) )
+      import java.time.temporal.ChronoUnit
+      ISO_OFFSET_DATE_TIME.format( Instant.now().truncatedTo(ChronoUnit.SECONDS).atZone(ZoneId.of(Params.timeZone)) )
 
     val untemplatePackagePath =
       val list = "untemplate" :: Params.sitePackage.split("\\.").toList
