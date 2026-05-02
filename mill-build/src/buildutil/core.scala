@@ -37,4 +37,7 @@ def copySiteScriptAs( file : os.Path ) =
 def copyRepublishScriptAs( file : os.Path ) =
   os.copy( os.Path("static/script/republish.sh", metabuildRoot), file )
 
+def copyGitignoreAs( file : os.Path ) =
+  os.copy( os.Path("static/_gitignore", metabuildRoot), file )
+
 

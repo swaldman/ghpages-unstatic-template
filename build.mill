@@ -70,7 +70,8 @@ object `package` extends Module:
     BuildCtx.withFilesystemCheckerDisabled:
       os.write( staticPath / "css" / "style.css", buildutil.staticCssStyle )
       buildutil.copyImageInto( staticPath )
-      buildutil.copyDotGithubAs( os.pwd / ".github" ) // goes in the top-level of the generated site
+      buildutil.copyDotGithubAs( os.pwd / ".github" )    // goes in the top-level of the generated site
+      buildutil.copyGitignoreAs( os.pwd / ".gitignore" ) // goes in the top-level of the generated site
       buildutil.copySiteScriptAs( os.pwd / "site" )
       os.perms.set( os.pwd / "site", "rwxr-xr-x" )
       buildutil.copyDevcycleScriptAs( os.pwd / "devcycle" )
