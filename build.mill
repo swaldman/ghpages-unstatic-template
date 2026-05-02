@@ -27,7 +27,7 @@ val Params = ghpages.unstatic.template.Params(
   // sitePath              = "/",
   // sitePackage           = "my.unstatic.website",
   // millVersion           = "1.0.6",
-  // millJvmVersion        = "17",
+  // millJvmVersion        = "21",
   // untemplateMillVersion = "0.3.0",
   // unstaticVersion       = "0.4.0",
   // scalaVersion          = "3.3.7",
@@ -64,6 +64,7 @@ object `package` extends Module:
     os.makeDir(entriesPath)
     BuildCtx.withFilesystemCheckerDisabled:
       os.write( entriesPath / "entry-hello.md.untemplate", buildutil.resolveLayoutHelloPost( Map("pubdate" -> ts) ) )
+      os.write( entriesPath / "entry-hello.md.untemplate-off", buildutil.resolveLayoutHelloPost( Map("pubdate" -> ts) ) )
     os.makeDir(staticPath)
     os.makeDir(staticPath / "css")
     BuildCtx.withFilesystemCheckerDisabled:
@@ -72,6 +73,8 @@ object `package` extends Module:
       buildutil.copyDotGithubAs( os.pwd / ".github" ) // goes in the top-level of the generated site
       buildutil.copySiteScriptAs( os.pwd / "site" )
       os.perms.set( os.pwd / "site", "rwxr-xr-x" )
+      buildutil.copyDevcycleScriptAs( os.pwd / "devcycle" )
+      os.perms.set( os.pwd / "devcycle", "rwxr-xr-x" )
 
       // let's not do this. let's just let push be publish, and not have
       // a redundant public directory in git
@@ -101,5 +104,12 @@ object `package` extends Module:
     os.call( "git"::"add"::"."::Nil, cwd=absPath )
     os.call( "git"::"commit"::"-m"::"Initial import of template website."::Nil, cwd=absPath )
 
-
+  def showTimeZones = Task:
+    import scala.Console
+    import scala.collection.immutable.TreeSet
+    import scala.jdk.CollectionConverters._
+    for
+      zid <- TreeSet.from(java.time.ZoneId.getAvailableZoneIds().asScala)
+    do
+      Console.println(zid)
 

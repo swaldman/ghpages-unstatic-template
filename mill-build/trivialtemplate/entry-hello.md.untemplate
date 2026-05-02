@@ -2,6 +2,7 @@
 >
 > val UntemplateAttributes = immutable.Map[String,Any] (
 >   "Title"         -> "Hello!",
+>   "Author"        -> "Scrooge McDuck",
 >   "PubDate"       -> "%pubdate%",
 >   "Anchor"        -> uid
 > )

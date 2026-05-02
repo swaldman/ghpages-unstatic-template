@@ -8,7 +8,7 @@ case class Params(
   sitePath              : String = "/",
   sitePackage           : String = "my.unstatic.website",
   millVersion           : String = "1.0.6",
-  millJvmVersion        : String = "17",
+  millJvmVersion        : String = "21",
   untemplateMillVersion : String = "0.3.0",
   unstaticVersion       : String = "0.4.0",
   scalaVersion          : String = "3.3.7",
