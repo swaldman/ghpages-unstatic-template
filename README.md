@@ -41,7 +41,7 @@ You should make your own choices, rather than reproduce mine!
 
 _For this tutorial, I've set up a custom domain, `https://test-unstatic.mchange.com`._
 
-### II. Clone and configure this repository
+#### II. Clone and configure this repository
 
 1. Clone this repository. That's just
 
@@ -84,7 +84,7 @@ _For this tutorial, I've set up a custom domain, `https://test-unstatic.mchange.
    )
    ```
 
-### III. Generate your static-site generator
+#### III. Generate your static-site generator
 
 1. Decide where you'd like your new static-site repository to be generated.
    You'll need to provide an absolute URL for a directory that will be created.
@@ -105,7 +105,7 @@ _For this tutorial, I've set up a custom domain, `https://test-unstatic.mchange.
 
    You are now done with your clone of this repository. You can delete it if you want.
 
-### IV. Generate the placeholder site
+#### IV. Generate the placeholder site
 
 1. Change into your new static-site generator home directory.
 
@@ -121,7 +121,7 @@ You should see that a `public` directory has been created, containing
 an `index.html` file. Open that file in a web browser, and check out
 your generated site!
 
-### V. Push and publish your site
+#### V. Push and publish your site
 
 Your site will automatically (re)publish itself whenever you push it to
 the branch `main` on github.
@@ -142,7 +142,7 @@ the branch `main` on github.
 > It takes github a while to generate SSL certificates for your custom domain.
 > Try viewing your site with an `http` rather than `https` URL if that happens, or just wait a while.
 
-### VI. Create your real first post
+#### VI. Create your real first post
 
 In the `entries` directory, you'll see files like `entry-hello.md.untemplate` and `entry-hello.md.untemplate-off`.
 Those files are identical. `entry-hello.md.untemplate-off` is only present as an example file that you can leave
@@ -195,7 +195,7 @@ Let's create a "real" first post!
    you would place HTML &mdash; an embeddable fragment, not a full page &mdash; in the body
    of the entry.)
 
-### VII. Preview and continuously edit your post.
+#### VII. Preview and continuously edit your post.
 
 Once you have a draft of your first post, inside your new static-site generator, run the following
 command:
@@ -208,7 +208,7 @@ Now point a browser to `http://localhost:8999`. You'll see a preview of your sit
 
 Edit your post, and hit refresh in your browser, until you are happy with your work.
 
-### VIII. Republish your website
+#### VIII. Republish your website
 
 Once you are happy with your work, Hit `<ctrl>-c` to end the `./devcycle` script.
 
@@ -216,9 +216,14 @@ To republish your site, all you need to do is commit it to `git` and then `push`
 to github. The simplest approach is just...
 
 ```plaintext
-$ git commit -a -m "Write first real post."
+$ git add .
+$ git commit -m "Write first real post."
 $ git push
 ```
 
 Though of course it's best to use `git status`, `git diff`, and more selective `git add` if you
 are comfortable using those tools.
+
+In any case, every push to main republishes. (It may take a few minutes though.)
+
+
