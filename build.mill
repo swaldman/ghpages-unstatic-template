@@ -21,7 +21,7 @@ import scala.util.Using
 //       https://<user>.github.io/ and sitePath should
 //       be "/<repo-name>"
 val Params = ghpages.unstatic.template.Params(
-  siteServerAbsUrl = "https://www.example.com/", 
+  siteServerAbsUrl = "https://www.example.com/", // must end with a slash!
   title            = "Example Blog",
   // maxFrontPageEntries   = 5,
   // timeZone              = "America/New_York",
@@ -88,7 +88,7 @@ object `package` extends Module:
     val TargetPath = os.Path("mill", os.pwd)
 
     // write the mill wrapper script
-    Using.resource( new BufferedInputStream( new URL(SourceUrl).openStream() ) ): is =>
+    Using.resource( new BufferedInputStream( new URI(SourceUrl).toURL().openStream() ) ): is =>
       val exists = os.exists(TargetPath)
       if exists then
         val perms : os.PermSet = os.perms(TargetPath) + OWNER_EXECUTE + GROUP_EXECUTE + OTHERS_EXECUTE
