@@ -9,6 +9,7 @@ val blog = site.MainBlog
 val feedLoc = blog.rssFeed
 val cssLoc = site.location("css/style.css")
 val mainLoc = site.location("/index.html")
+val rssImageLoc = site.location("/image/1024px-Feed-icon.svg_.png")
 val archiveLoc = MainSite.MainBlog.Archive.location
 
 val currentSiteRootedPath = input.renderLocation.siteRootedPath
@@ -76,7 +77,7 @@ end title
 ()>
       </div>
       <div id="rss-link-container">
-        <a id="rss-link" href="<( feedLoc.relative )>"><img id="rss-link-image" border="0" src="image/1024px-Feed-icon.svg_.png"></a>
+        <a id="rss-link" href="<( feedLoc.relative )>"><img id="rss-link-image" border="0" src="<( rssImageLoc.relative )>"></a>
       </div>
     </header>
     <main>
