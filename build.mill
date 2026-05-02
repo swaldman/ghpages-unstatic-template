@@ -8,14 +8,19 @@ import mill.*, scalalib.*
 
 import mill.api.BuildCtx
 
+import mainargs.arg
+
 import java.io.*
 import java.nio.file.attribute.PosixFilePermission.*
 
 import java.net.URL
 import scala.util.Using
 
+// NOTE: if you will not attach this to a custom domain,
+//       then siteServerAbsUrl should be something like
+//       https://<user>.github.io/<repo-name>/
 val Params = ghpages.unstatic.template.Params(
-  siteServerAbsUrl = "https://www.example.com/",
+  siteServerAbsUrl = "https://www.example.com/", 
   title            = "Example Blog",
   // maxFrontPageEntries   = 5,
   // timeZone              = "America/New_York",
@@ -41,6 +46,7 @@ object `package` extends Module:
       val list = "untemplate" :: Params.sitePackage.split("\\.").toList
       os.Path( list.mkString("/"), os.pwd )
 
+    val staticPath  = os.Path("static", os.pwd)
     val entriesPath = os.Path("entries", os.pwd)
 
     import ghpages.unstatic.template.root
@@ -58,11 +64,20 @@ object `package` extends Module:
     os.makeDir(entriesPath)
     BuildCtx.withFilesystemCheckerDisabled:
       os.write( entriesPath / "entry-hello.md.untemplate", buildutil.resolveLayoutHelloPost( Map("pubdate" -> ts) ) )
-    os.makeDir(os.Path("static", os.pwd))
-    os.makeDir(os.Path("static/css", os.pwd))
+    os.makeDir(staticPath)
+    os.makeDir(staticPath / "css")
     BuildCtx.withFilesystemCheckerDisabled:
-      os.write( os.Path("static/css/style.css", os.pwd), buildutil.staticCssStyle )
-      buildutil.copyImageInto( os.Path("static", os.pwd) )
+      os.write( staticPath / "css" / "style.css", buildutil.staticCssStyle )
+      buildutil.copyImageInto( staticPath )
+      buildutil.copyDotGithubAs( os.pwd / ".github" ) // goes in the top-level of the generated site
+      buildutil.copySiteScriptAs( os.pwd / "site" )
+      os.perms.set( os.pwd / "site", "rwxr-xr-x" )
+
+      // let's not do this. let's just let push be publish, and not have
+      // a redundant public directory in git
+      //
+      // buildutil.copyRepublishScriptAs( os.pwd / "republish.sh" )
+      // os.perms.set( os.pwd / "republish.sh", "rwxr-xr-x" )
 
     val SourceUrl = "https://raw.githubusercontent.com/com-lihaoyi/mill/refs/heads/main/mill"
     val TargetPath = os.Path("mill", os.pwd)
@@ -76,4 +91,15 @@ object `package` extends Module:
       else
         val perms : os.PermSet = "rwxr-xr-x"
         os.write(TargetPath, is, perms=perms)
+
+    os.pwd
+
+  def create( @arg(positional = true) absPath : os.Path ) = Task.Command:
+    val dir = template()
+    os.copy( dir, absPath )
+    os.call( "git"::"init"::Nil, cwd=absPath )
+    os.call( "git"::"add"::"."::Nil, cwd=absPath )
+    os.call( "git"::"commit"::"-m"::"Initial import of template website."::Nil, cwd=absPath )
+
+
 

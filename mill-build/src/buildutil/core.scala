@@ -28,4 +28,13 @@ def staticCssStyle : String =
 def copyImageInto( dir : os.Path ) =
   os.copy.into( os.Path("static/image", metabuildRoot), dir )
 
+def copyDotGithubAs( dir : os.Path ) =
+  os.copy( os.Path("static/_github", metabuildRoot), dir )
+
+def copySiteScriptAs( file : os.Path ) =
+  os.copy( os.Path("static/script/site", metabuildRoot), file )
+
+def copyRepublishScriptAs( file : os.Path ) =
+  os.copy( os.Path("static/script/republish.sh", metabuildRoot), file )
+
 

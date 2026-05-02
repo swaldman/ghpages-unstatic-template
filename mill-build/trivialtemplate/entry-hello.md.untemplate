@@ -1,21 +1,14 @@
-> val updateHistory =
->   //UpdateRecord("2024-10-22T21:00:00-04:00", Some("This is just a temporary dummy test update to style updates."), Some("40a76141baeae4ccf283f421811540575dafdb2c")) ::
->   Nil
->
-> val uid = "hello"
+> val uid = "hello" // a unique ID you can use in future posts to refer to this one
 >
 > val UntemplateAttributes = immutable.Map[String,Any] (
->   "Title"         -> "Hello",
+>   "Title"         -> "Hello!",
 >   "PubDate"       -> "%pubdate%",
->   "UpdateHistory" -> updateHistory,
 >   "Anchor"        -> uid
 > )
 
 given PageBase = PageBase.fromPage(input.renderLocation)
 
 (input : MainBlog.EntryInput)[]~()>      ### modify Title/Author/Pubdate above, add markdown or html below!
-
-Hello!
 
 This is an automatically generated placeholder entry in your new blog.
 You'll probably want to delete it.
