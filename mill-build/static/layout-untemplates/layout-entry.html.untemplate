@@ -105,7 +105,7 @@ given PageBase = PageBase.fromPage(input.renderLocation)
 <()
   }
 ()>
-            <a href="<( permalink.relative )>">draft</a> by <b><( authorsString )></b><br/><( timestamp )>
+            <a href="<( permalink.relative )>">draft</a> by <b><( authorsString )></b><br/><a href="<( permalink.relative )>"><( timestamp )></a>
           </div>
         </div>
       </div> <!-- entry-header-body-footer -->
