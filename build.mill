@@ -18,7 +18,8 @@ import scala.util.Using
 
 // NOTE: if you will not attach this to a custom domain,
 //       then siteServerAbsUrl should be something like
-//       https://<user>.github.io/<repo-name>/
+//       https://<user>.github.io/ and sitePath should
+//       be "/<repo-name>"
 val Params = ghpages.unstatic.template.Params(
   siteServerAbsUrl = "https://www.example.com/", 
   title            = "Example Blog",

@@ -53,11 +53,11 @@ _For this tutorial, I've set up a custom domain, `https://test-unstatic.mchange.
 
    Most users will edit only the uncommented values for
    - `siteServerAbsUrl` &mdash; this will usually look something like `https://www.mydomain.com/` or else
-     `https://<user>.github.io/<repo-name>/`, where repo name is the github repo
+     `https://<user>.github.io/`, where repo name is the github repo
      you configured above.
    - `title` &mdash; this will become the user-visible title of the generated site
 
-   _For this tutorial, I've set `siteServerAbsUrl` to `https://test-unstatic.mchange.com` and
+   _For this tutorial, I've set `siteServerAbsUrl` to `https://test-unstatic.mchange.com/` and
    title to `Getting Started Example`._
 
    Here's what `Params` looks like. You can uncomment and override other values if you wish.
@@ -66,9 +66,10 @@ _For this tutorial, I've set up a custom domain, `https://test-unstatic.mchange.
    ```scala
    // NOTE: if you will not attach this to a custom domain,
    //       then siteServerAbsUrl should be something like
-   //       https://<user>.github.io/<repo-name>/
+   //       https://<user>.github.io/ and sitePath should
+   //       be "/<repo-name>"
    val Params = ghpages.unstatic.template.Params(
-     siteServerAbsUrl = "https://www.example.com/",
+     siteServerAbsUrl = "https://www.example.com/", // must end with a slash!
      title            = "Example Blog",
      // maxFrontPageEntries   = 5,
      // timeZone              = "America/New_York",
@@ -225,5 +226,3 @@ Though of course it's best to use `git status`, `git diff`, and more selective `
 are comfortable using those tools.
 
 In any case, every push to main republishes. (It may take a few minutes though.)
-
-
