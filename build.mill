@@ -13,7 +13,7 @@ import mainargs.arg
 import java.io.*
 import java.nio.file.attribute.PosixFilePermission.*
 
-import java.net.URL
+import java.net.{URI,URL}
 import scala.util.Using
 
 // NOTE: if you will not attach this to a custom domain,
