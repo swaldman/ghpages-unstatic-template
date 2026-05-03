@@ -2,6 +2,25 @@
 
 _That's a catchy name, right?_
 
+Table of Contents
+=================
+
+* [ghpages\-unstatic\-template](#ghpages-unstatic-template)
+    * [Introduction](#introduction)
+    * [Getting Started](#getting-started)
+      * [I\. Create and configure a github repository](#i-create-and-configure-a-github-repository)
+      * [II\. Clone and configure this repository](#ii-clone-and-configure-this-repository)
+      * [III\. Generate your static\-site generator](#iii-generate-your-static-site-generator)
+      * [IV\. Generate the placeholder site](#iv-generate-the-placeholder-site)
+      * [V\. Push and publish your site](#v-push-and-publish-your-site)
+      * [VI\. Create your real first post](#vi-create-your-real-first-post)
+      * [VII\. Preview and continuously edit your post\.](#vii-preview-and-continuously-edit-your-post)
+      * [VIII\. Republish your website](#viii-republish-your-website)
+      * [IX\. More posts, with media and safe references](#ix-more-posts-with-media-and-safe-references)
+      * [X\. Congratulations\!](#x-congratulations)
+
+---
+
 ### Introduction
 
 [_unstatic_](https://github.com/swaldman/unstatic) is a library for building flexible, customizable static-site generators.
@@ -286,7 +305,7 @@ We should see something like
 [79]   String endpoint of type 'text/html; charset=UTF-8'.
 [79]   Static generation and HTTP service.
 [79]     media-dir: /2026/05/02/second-post-with-media/
-[79]     media-dir (absolute): 
+[79]     media-dir (absolute):
 [79]       /Users/swaldman/tmp/my-unstatic-site/static/2026/05/02/second-post-with-media
 [79]     uid: entry_second_post_md
 [79] Location: /2026/05/02/second-post-with-media/index.rss
@@ -305,7 +324,7 @@ We could have used `second`, but to avoid ambiguity, `econd` is easy.
 > But that's a more advanced topic.
 
 We can see there are already two endpoints containing "econd", our post,
-and a [single-item RSS](https://tech.interfluidity.com/2024/11/12/supporting-single-item-rss/index.html) 
+and a [single-item RSS](https://tech.interfluidity.com/2024/11/12/supporting-single-item-rss/index.html)
 document that is generated for that post.
 
 But the actual blog post has a media directory: `/Users/swaldman/tmp/my-unstatic-site/static/2026/05/02/second-post-with-media`
@@ -391,5 +410,3 @@ But you can also modify the structure of your site, which is defined by [untempl
 Please check out the [untemplate docs](https://github.com/swaldman/untemplate-doc#readme)!
 
 You can see the results of my run of this tutorial [here](https://test-unstatic.mchange.com/).
-
-
