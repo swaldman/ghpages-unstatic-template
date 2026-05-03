@@ -2,8 +2,9 @@
 
 _That's a catchy name, right?_
 
-Table of Contents
-=================
+---
+
+### Table of Contents
 
 * [ghpages\-unstatic\-template](#ghpages-unstatic-template)
     * [Introduction](#introduction)
