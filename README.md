@@ -6,19 +6,18 @@ _That's a catchy name, right?_
 
 ### Table of Contents
 
-* [ghpages\-unstatic\-template](#ghpages-unstatic-template)
-    * [Introduction](#introduction)
-    * [Getting Started](#getting-started)
-      * [I\. Create and configure a github repository](#i-create-and-configure-a-github-repository)
-      * [II\. Clone and configure this repository](#ii-clone-and-configure-this-repository)
-      * [III\. Generate your static\-site generator](#iii-generate-your-static-site-generator)
-      * [IV\. Generate the placeholder site](#iv-generate-the-placeholder-site)
-      * [V\. Push and publish your site](#v-push-and-publish-your-site)
-      * [VI\. Create your real first post](#vi-create-your-real-first-post)
-      * [VII\. Preview and continuously edit your post\.](#vii-preview-and-continuously-edit-your-post)
-      * [VIII\. Republish your website](#viii-republish-your-website)
-      * [IX\. More posts, with media and safe references](#ix-more-posts-with-media-and-safe-references)
-      * [X\. Congratulations\!](#x-congratulations)
+* [Introduction](#introduction)
+* [Getting Started](#getting-started)
+  * [I\. Create and configure a github repository](#i-create-and-configure-a-github-repository)
+  * [II\. Clone and configure this repository](#ii-clone-and-configure-this-repository)
+  * [III\. Generate your static\-site generator](#iii-generate-your-static-site-generator)
+  * [IV\. Generate the placeholder site](#iv-generate-the-placeholder-site)
+  * [V\. Push and publish your site](#v-push-and-publish-your-site)
+  * [VI\. Create your real first post](#vi-create-your-real-first-post)
+  * [VII\. Preview and continuously edit your post\.](#vii-preview-and-continuously-edit-your-post)
+  * [VIII\. Republish your website](#viii-republish-your-website)
+  * [IX\. More posts, with media and safe references](#ix-more-posts-with-media-and-safe-references)
+  * [X\. Congratulations\!](#x-congratulations)
 
 ---
 
