@@ -371,6 +371,14 @@ We have special syntax for...
 - Relative links to posts with UIDs: `##<uid>`
 - Relative links to anything on the site, relative to site root (server root + any `sitePath`): `##/<path-from-site-root>`
 
+Let's not forget to publish our second post! It's just
+
+```plaintext
+$ git add .
+$ git commit -m "Publish second post."
+$ git push
+```
+
 #### X. Congratulations!
 
 There is lots more to talk about and understand. `unstatic`-based sites are protean and extensible. You can make them
