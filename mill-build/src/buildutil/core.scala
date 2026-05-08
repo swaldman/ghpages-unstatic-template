@@ -1,5 +1,7 @@
 package buildutil
 
+import com.mchange.trivialtemplate
+
 val metabuildRoot = os.Path( sys.env("MILL_WORKSPACE_ROOT") ) / "mill-build"
 
 def resolveLayoutMainHtmlUntemplate( replacements : Map[String,String] ) : String =
